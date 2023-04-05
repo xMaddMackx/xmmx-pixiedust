@@ -120,15 +120,17 @@ end)
 
 function loadAnimDict(dict)	if not HasAnimDictLoaded(dict) then while not HasAnimDictLoaded(dict) do RequestAnimDict(dict) Wait(5) end end end
 
-function PixieDream() -- Gun Bunker
+function PixieDream()
     if not bunker then
         bunker = true
         laundry = true
         local player = PlayerPedId()
+        startCoords = GetEntityCoords(player)
+        startHeading = GetEntityHeading(player)
         ShakeGameplayCam('DRUNK_SHAKE', 1.25)
         SetTimecycleModifierStrength(1.0)
         SetTimecycleModifier("BikerFilter")
-        TriggerEvent("InteractSound_CL:PlayOnOne", "gunclicks", Config.GunVol) -- Adjust sound volume here
+        TriggerEvent("InteractSound_CL:PlayOnOne", "gunclicks", Config.GunVol)
         DoScreenFadeOut(8000)
         loadAnimDict('random@drunk_driver_1') 
         TaskPlayAnim(player, "random@drunk_driver_1", "drunk_fall_over", 8.0, 8.0, -1, 0, 0, false, false, false ) 
@@ -161,7 +163,7 @@ function PixieDream() -- Gun Bunker
         ShakeGameplayCam('DRUNK_SHAKE', 1.25)
         SetTimecycleModifierStrength(1.0)
         SetTimecycleModifier("BikerFilter")
-        TriggerEvent("InteractSound_CL:PlayOnOne", "lullaby", Config.PublicVol) -- Adjust sound here
+        TriggerEvent("InteractSound_CL:PlayOnOne", "lullaby", Config.PublicVol)
         DoScreenFadeOut(8000)
         loadAnimDict('random@drunk_driver_1') 
         TaskPlayAnim(player, "random@drunk_driver_1", "drunk_fall_over", 8.0, 8.0, -1, 0, 0, false, false, false )    
@@ -169,8 +171,8 @@ function PixieDream() -- Gun Bunker
         loadAnimDict('timetable@tracy@sleep@') 
         TaskPlayAnim(player, "timetable@tracy@sleep@", "idle_c", 8.0, 8.0, -1, 0, 0, true, true, true )
         while not IsScreenFadedOut() do Wait(100) end
-        SetEntityCoords(player, Config.Public.Coords) 
-        SetEntityHeading(player, Config.Public.Heading) 
+        SetEntityCoords(player, startCoords) 
+        SetEntityHeading(player, startHeading) 
         loadAnimDict('timetable@tracy@sleep@') 
         TaskPlayAnim(player, "timetable@tracy@sleep@", "idle_c", 8.0, 8.0, -1, 0, 0, false, false, false )
         Citizen.Wait(2000)
@@ -190,15 +192,17 @@ function PixieDream() -- Gun Bunker
     end
 end
 
-function PixieDream2() -- Money Wash
+function PixieDream2()
     if not laundry then
         laundry = true
         bunker = true
         local player = PlayerPedId()
+        startCoords = GetEntityCoords(player)
+        startHeading = GetEntityHeading(player)
         ShakeGameplayCam('DRUNK_SHAKE', 1.25)
         SetTimecycleModifierStrength(1.0)
         SetTimecycleModifier("BikerFilter")
-        TriggerEvent("InteractSound_CL:PlayOnOne", "coinsdrop", Config.MoneyVol) -- Adjust sound volume here
+        TriggerEvent("InteractSound_CL:PlayOnOne", "coinsdrop", Config.MoneyVol)
         DoScreenFadeOut(8000)
         loadAnimDict('random@drunk_driver_1') 
         TaskPlayAnim(player, "random@drunk_driver_1", "drunk_fall_over", 8.0, 8.0, -1, 0, 0, false, false, false ) 
@@ -231,7 +235,7 @@ function PixieDream2() -- Money Wash
         ShakeGameplayCam('DRUNK_SHAKE', 1.25)
         SetTimecycleModifierStrength(1.0)
         SetTimecycleModifier("BikerFilter")
-        TriggerEvent("InteractSound_CL:PlayOnOne", "lullaby", Config.PublicVol) -- Adjust sound here
+        TriggerEvent("InteractSound_CL:PlayOnOne", "lullaby", Config.PublicVol)
         DoScreenFadeOut(8000)
         loadAnimDict('random@drunk_driver_1') 
         TaskPlayAnim(player, "random@drunk_driver_1", "drunk_fall_over", 8.0, 8.0, -1, 0, 0, false, false, false )    
